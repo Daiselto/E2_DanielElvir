@@ -7,6 +7,7 @@ package e2_danielelvir;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
  *
@@ -16,12 +17,14 @@ public class E2__DanielElvir extends javax.swing.JFrame {
 
     ArrayList<Numero> numeros = new ArrayList<>();
     static Scanner leer = new Scanner(System.in);
+    private JFrame abrir;
 
     /**
      * Creates new form E2__DanielElvir
      */
     public E2__DanielElvir() {
         initComponents();
+        abrir = this;
     }
 
     /**
@@ -73,16 +76,21 @@ public class E2__DanielElvir extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(171, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(159, 159, 159)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(155, 155, 155))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,9 +99,9 @@ public class E2__DanielElvir extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(31, 31, 31)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(43, 43, 43)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(70, Short.MAX_VALUE))
         );
@@ -117,85 +125,89 @@ public class E2__DanielElvir extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        abrir.setVisible(false);
+        boolean seguir = true;
+        while (seguir) {
+            String opcionStr = JOptionPane.showInputDialog(
+                    "Bienvenido a la opcion de Numeros\n"
+                    + "1. Agregar Numero\n"
+                    + "2. Eliminar Numero\n"
+                    + "3. Para volver al menu principal\n"
+                    + "Ingrese su opcion"
+            );
 
-        String opcionStr = JOptionPane.showInputDialog(
-                "Bienvenido a la opcion de Numeros\n"
-                + "1. Agregar Numero\n"
-                + "2. Eliminar Numero\n"
-                + "3. Para volver al menu principal\n"
-                + "Ingrese su opcion"
-        );
+            int opcion = Integer.parseInt(opcionStr);
 
-        int opcion = Integer.parseInt(opcionStr);
-
-        switch (opcion) {
-            case 1: {
-                boolean confirmar1 = true;
-                boolean confirmar2 = true;
-                String input = JOptionPane.showInputDialog("Ingrese la base del número:");
-                int base = Integer.parseInt(input);
-                while (confirmar1) {
-                    if (base < 2 || base > 35) {
-                        JOptionPane.showMessageDialog(null, "BASE FUERA DE LOS PARAMETROS");
-                        input = JOptionPane.showInputDialog("Ingrese la base del número:");
-                        base = Integer.parseInt(input);
-                    } else {
-                        confirmar1 = false;
+            switch (opcion) {
+                case 1: {
+                    boolean confirmar1 = true;
+                    boolean confirmar2 = true;
+                    String input = JOptionPane.showInputDialog("Ingrese la base del número:");
+                    int base = Integer.parseInt(input);
+                    while (confirmar1) {
+                        if (base < 2 || base > 35) {
+                            JOptionPane.showMessageDialog(null, "BASE FUERA DE LOS PARAMETROS");
+                            input = JOptionPane.showInputDialog("Ingrese la base del número:");
+                            base = Integer.parseInt(input);
+                        } else {
+                            confirmar1 = false;
+                        }
                     }
-                }
-                input = JOptionPane.showInputDialog("Ingrese el valor decimal del número:");
-                int valorDecimal = Integer.parseInt(input);
-                while (confirmar2) {
-                    if (valorDecimal < 0) {
-                        JOptionPane.showMessageDialog(null, "El valor es muy pequeño");
-                        input = JOptionPane.showInputDialog("Ingrese el valor decimal del número:");
-                        valorDecimal = Integer.parseInt(input);
-                    } else {
-                        confirmar2 = false;
+                    input = JOptionPane.showInputDialog("Ingrese el valor decimal del número:");
+                    int valorDecimal = Integer.parseInt(input);
+                    while (confirmar2) {
+                        if (valorDecimal < 0) {
+                            JOptionPane.showMessageDialog(null, "El valor es muy pequeño");
+                            input = JOptionPane.showInputDialog("Ingrese el valor decimal del número:");
+                            valorDecimal = Integer.parseInt(input);
+                        } else {
+                            confirmar2 = false;
+                        }
                     }
-                }
-                Numero numero = new Numero(base, valorDecimal);
-                numeros.add(numero);
-                JOptionPane.showMessageDialog(null, "Número agregado correctamente.");
+                    Numero numero = new Numero(base, valorDecimal);
+                    numeros.add(numero);
+                    JOptionPane.showMessageDialog(null, "Número agregado correctamente.");
 
-                Respuesta();
-
-                break;
-            }
-
-            case 2: {
-                if (numeros.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "La lista está vacía, primero debe llenarla.");
-                } else {
-                    String input = JOptionPane.showInputDialog("Ingrese el índice del número que desea eliminar:");
                     Respuesta();
-                    int indice = Integer.parseInt(input);
-                    int indiceReal = indice - 1;
 
-                    if (indiceReal >= 0 && indiceReal < numeros.size()) {
-                        numeros.remove(indiceReal);
-                        JOptionPane.showMessageDialog(null, "Número eliminado correctamente.");
-                        System.out.println("Nueva lista");
-                        System.out.println("");
-                        Respuesta();
-                        break;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Índice inválido.");
-                    }
+                    break;
                 }
-                break;
-            }
 
-            case 3: {
-                JOptionPane.showMessageDialog(null, "Volviendo al menu principal");
+                case 2: {
+                    if (numeros.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "La lista está vacía, primero debe llenarla.");
+                    } else {
+                        Respuesta();
+                        String input = JOptionPane.showInputDialog("Ingrese el índice del número que desea eliminar:");                                            
+                        int indice = Integer.parseInt(input);
+                        int indiceReal = indice - 1;
 
-                break;
+                        if (indiceReal >= 0 && indiceReal < numeros.size()) {
+                            numeros.remove(indiceReal);
+                            JOptionPane.showMessageDialog(null, "Número eliminado correctamente.");
+                            System.out.println("Nueva lista");
+                            System.out.println("");
+                            Respuesta();
+                            break;
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Índice inválido.");
+                        }
+                    }
+                    break;
+                }
+
+                case 3: {
+                    JOptionPane.showMessageDialog(null, "Volviendo al menu principal");
+                    seguir = false;
+                    abrir.setVisible(true);
+                    break;
+                }
             }
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        abrir.setVisible(false);
         boolean seguir = true;
         while (seguir) {
             if (numeros.isEmpty()) {
@@ -221,7 +233,15 @@ public class E2__DanielElvir extends javax.swing.JFrame {
                         int indice2 = Integer.parseInt(input2) - 1;
 
                         if (indice1 >= 0 && indice1 < numeros.size() && indice2 >= 0 && indice2 < numeros.size()) {
+                            Numero num1 = numeros.get(indice1);
+                            Numero num2 = numeros.get(indice2);
 
+                            int baseMayor = obtenerBaseMayor(num1.getBase(), num2.getBase());
+
+                            Numero num = new Numero(baseMayor, num1.baseToDec(num1.getNumero() + num2.baseToDec(num2.getNumero())));
+
+                            JOptionPane.showMessageDialog(null, "La suma de los números es: " + num.getNumero() + " en base " + num.getBase() + " : " + num.baseToDec(num.getNumero()));
+                            Respuesta();
                         } else {
                             JOptionPane.showMessageDialog(null, "Índices inválidos.");
                         }
@@ -231,13 +251,35 @@ public class E2__DanielElvir extends javax.swing.JFrame {
 
                     case 2: {
                         Respuesta();
-                        String input1 = JOptionPane.showInputDialog("Ingrese el índice del primer número para sumar:");
+                        String input1 = JOptionPane.showInputDialog("Ingrese el índice del primer número para restar:");
                         int indice1 = Integer.parseInt(input1) - 1;
-                        String input2 = JOptionPane.showInputDialog("Ingrese el índice del segundo número para sumar:");
+                        String input2 = JOptionPane.showInputDialog("Ingrese el índice del segundo número para restar:");
                         int indice2 = Integer.parseInt(input2) - 1;
 
                         if (indice1 >= 0 && indice1 < numeros.size() && indice2 >= 0 && indice2 < numeros.size()) {
+                            Numero num1 = numeros.get(indice1);
+                            Numero num2 = numeros.get(indice2);
 
+                            boolean positivo;
+                            if (num1.baseToDec(num1.getNumero()) < num2.baseToDec(num2.getNumero())) {
+                                positivo = true;
+                            } else {
+                                positivo = false;
+                            }
+
+                            if (positivo) {
+                                JOptionPane.showMessageDialog(null, "El resultado de la resta es negativo");
+                                break;
+                            } else {
+
+                            }
+
+                            int baseMayor = obtenerBaseMayor(num1.getBase(), num2.getBase());
+
+                            Numero num = new Numero(baseMayor, (num1.baseToDec(num1.getNumero()) - (num2.baseToDec(num2.getNumero()))));
+
+                            JOptionPane.showMessageDialog(null, "La resta de los números es: " + num.getNumero() + " en base " + num.getBase() + " : " + num.baseToDec(num.getNumero()));
+                            Respuesta();
                         } else {
                             JOptionPane.showMessageDialog(null, "Índices inválidos.");
                         }
@@ -247,13 +289,21 @@ public class E2__DanielElvir extends javax.swing.JFrame {
 
                     case 3: {
                         Respuesta();
-                        String input1 = JOptionPane.showInputDialog("Ingrese el índice del primer número para sumar:");
+                        String input1 = JOptionPane.showInputDialog("Ingrese el índice del primer número para multiplicar:");
                         int indice1 = Integer.parseInt(input1) - 1;
-                        String input2 = JOptionPane.showInputDialog("Ingrese el índice del segundo número para sumar:");
+                        String input2 = JOptionPane.showInputDialog("Ingrese el índice del segundo número para multiplicar:");
                         int indice2 = Integer.parseInt(input2) - 1;
 
                         if (indice1 >= 0 && indice1 < numeros.size() && indice2 >= 0 && indice2 < numeros.size()) {
+                            Numero num1 = numeros.get(indice1);
+                            Numero num2 = numeros.get(indice2);
 
+                            int baseMayor = obtenerBaseMayor(num1.getBase(), num2.getBase());
+
+                            Numero num = new Numero(baseMayor, (num1.baseToDec(num1.getNumero()) * (num2.baseToDec(num2.getNumero()))));
+
+                            JOptionPane.showMessageDialog(null, "La multiplicacion de los números es: " + num.getNumero() + " en base " + num.getBase() + " : " + num.baseToDec(num.getNumero()));
+                            Respuesta();
                         } else {
                             JOptionPane.showMessageDialog(null, "Índices inválidos.");
                         }
@@ -265,6 +315,7 @@ public class E2__DanielElvir extends javax.swing.JFrame {
                     case 4: {
                         JOptionPane.showMessageDialog(null, "Volviendo al menu principal");
                         seguir = false;
+                        abrir.setVisible(true);
                         break;
                     }
                 }
@@ -274,11 +325,23 @@ public class E2__DanielElvir extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void Respuesta() {
-        System.out.println("Números disponibles:");
+        String acum = "";
         for (int i = 0; i < numeros.size(); i++) {
             Numero num = numeros.get(i);
-            System.out.println((i + 1) + ". " + num.getNumero() + " en base " + num.getBase() + " : " + num.getDecimal());
+            acum += (i + 1) + ". " + num.getNumero() + " en base " + num.getBase() + " : " + num.baseToDec(num.getNumero()) + "\n";
         }
+        JOptionPane.showMessageDialog(null, acum);
+
+    }
+
+    public int obtenerBaseMayor(int base1, int base2) {
+        int mayor = 0;
+        if (base1 > base2) {
+            mayor = base1;
+        } else {
+            mayor = base2;
+        }
+        return mayor;
     }
 
     /**

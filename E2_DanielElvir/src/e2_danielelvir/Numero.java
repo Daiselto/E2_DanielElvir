@@ -3,36 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package e2_danielelvir;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP
  */
 public class Numero {
+
     private int base;
     private String numero;
-    private int decimal;
-    
-    public Numero(int base, int decimal){
-    this.base=base;
-    this.numero=decToBase(decimal);
-    this.decimal=decimal;
-}
-    
-     public int getBase() {
+
+    public Numero(int base, int decimal) {
+        this.base = base;
+        this.numero = decToBase(decimal);
+
+    }
+
+    public int getBase() {
         return this.base;
     }
 
     public String getNumero() {
         return this.numero;
     }
-    
-    public int getDecimal(){
-        return this.decimal;
-    }
-    
-     public String numToChar(int numero) {
+
+    public String numToChar(int numero) {
         if (numero >= 0 && numero <= 9) {
             return String.valueOf(numero);
         } else if (numero >= 10 && numero <= 35) {
@@ -89,5 +84,4 @@ public class Numero {
         return decimal;
     }
 
-    
 }
